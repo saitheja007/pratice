@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  linux-agentpool
+  MyAgentPool
 
 steps:
 - script: echo Hello, world!
