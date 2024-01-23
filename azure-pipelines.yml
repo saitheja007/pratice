@@ -5,10 +5,15 @@ pool:
   mytestpool
 
 jobs:
-- job: HelloWorldJob
-  displayName: 'Hello, World! Build'
+- job: RunPythonScriptJob
+  displayName: 'Run Python Script'
   steps:
   - checkout: self
 
-  - script: echo 'Hello, World!'
-    displayName: 'Print Hello, World!'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+
+  - script: python hello.py
+    displayName: 'Run Your Python Script'
