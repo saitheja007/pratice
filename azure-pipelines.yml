@@ -10,10 +10,16 @@ jobs:
   steps:
   - checkout: self
 
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.8'
-      addToPath: true
+  - script: |
+      sudo add-apt-repository ppa:deadsnakes/ppa -y
+      sudo apt-get update
+      sudo apt-get install python3.8 -y
+    displayName: 'Install Python 3.8'
 
-  - script: python hello.py
+  - script: |
+      echo "export GITHUB_TOKEN=$GITHUB_TOKEN" >> ~/.bashrc
+      source ~/.bashrc
+      python3.8 hello.py
     displayName: 'Run Your Python Script'
+    env:
+      GITHUB_TOKEN: $(GITHUB_TOKEN)
