@@ -1,3 +1,8 @@
 Initial commit
+<<<<<<< HEAD
 my changes after first commit
 hello
+
+
+my new changes
+testbranch
